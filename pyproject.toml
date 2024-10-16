@@ -1,28 +1,14 @@
-[build-system]
-requires = [
-    "setuptools>=42",
-    "setuptools_scm[toml]>=6.2",
-    "wheel"
-]
-build-backend = "setuptools.build_meta"
-
-[project]
+[tool.poetry]
 name = "HILO-MPC"
-description = """HILO-MPC is a toolbox for easy, flexible and fast development of machine-learning-supported optimal \
-control and estimation problems"""
+description = "HILO-MPC is a toolbox for easy, flexible and fast development of machine-learning-supported optimal control and estimation problems"
+version = "1.1.0"
+authors = ["Johannes Pohlodek", "Bruno Morabito", "Christian Schlauch", "Pablo Zometa", "Rolf Findeisen"]
+maintainers = ["HILO-MPC Developers"]
+license = "LGPL-3.0"
 readme = "README.md"
-requires-python = ">=3.7"
-license = {text = "LGPL-3.0"}  # file puts the whole license in the sidebar of PyPI
-authors = [
-    {name = "Johannes Pohlodek"},
-    {name = "Bruno Morabito"},
-    {name = "Christian Schlauch"},
-    {name = "Pablo Zometa"},
-    {name = "Rolf Findeisen"}
-]
-maintainers = [
-    {name = "HILO-MPC Developers"}
-]
+homepage = "https://www.ccps.tu-darmstadt.de/research_ccps/hilo_mpc/"
+repository = "https://github.com/hilo-mpc/hilo_mpc"
+documentation = "https://hilo-mpc.github.io/hilo-mpc/"
 keywords = ["machine-learning", "neural-networks", "gaussian-processes", "hybrid-modeling", "model-based-optimization",
     "model-predictive-control", "mpc", "trajectory-tracking-mpc", "path-following-mpc", "moving-horizon-estimation",
     "mhe", "lqr", "pid", "kalman-filters", "particle-filters"]
@@ -44,23 +30,19 @@ classifiers = [
     "Topic :: Scientific/Engineering",
     "Topic :: Software Development"
 ]
-dependencies = [
-    "casadi>=3.5",
-    "numpy<=1.19.5",
-    "scipy",
-    "prettytable"
-]
-dynamic = ["version"]
 
-[project.urls]
-Homepage = "https://www.ccps.tu-darmstadt.de/research_ccps/hilo_mpc/"
-Download = "https://github.com/hilo_mpc/hilo_mpc/releases"
-"Bug Tracker" = "https://github.com/hilo-mpc/hilo-mpc/issues"
-Documentation = "https://hilo-mpc.github.io/hilo-mpc/"
-"Source Code" = "https://github.com/hilo-mpc/hilo-mpc"
+[tool.poetry.dependencies]
+python = ">=3.7"
+casadi = ">=3.5"
+numpy = "*"
+scipy = "*"
+prettytable = "*"
 
-[tool.setuptools]
-packages = ["hilo_mpc"]
+[tool.poetry.dev-dependencies]
+setuptools = ">=42"
+setuptools_scm = {extras = ["toml"], version = ">=6.2"}
+wheel = "*"
 
-[tool.setuptools_scm]
-write_to = "hilo_mpc/_version.py"
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
